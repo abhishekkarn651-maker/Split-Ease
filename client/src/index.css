@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+/* ========================================
+   SplitEase — Custom Theme
+   White + Light Green theme with dark mode support
+   ======================================== */
+
+@theme {
+  /* Brand colors — soft greens */
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #16a34a;
+  --color-primary-700: #15803d;
+  --color-primary-800: #166534;
+  --color-primary-900: #14532d;
+
+  /* Neutral grays */
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #f1f5f9;
+  --color-surface-200: #e2e8f0;
+  --color-surface-300: #cbd5e1;
+  --color-surface-400: #94a3b8;
+  --color-surface-500: #64748b;
+  --color-surface-600: #475569;
+  --color-surface-700: #334155;
+  --color-surface-800: #1e293b;
+  --color-surface-900: #0f172a;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+  --shadow-modal: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-scale-in: scale-in 0.2s ease-out;
+}
+
+/* Custom keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   Login Page — Premium two-panel design
+   ======================================== */
+
+/* Floating particles */
+@keyframes login-float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes login-float-reverse {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(20px) rotate(-180deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes login-pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgba(34, 197, 94, 0.30);
+  }
+}
+
+@keyframes login-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.login-page-bg {
+  background: linear-gradient(135deg, #0c4a4e 0%, #0f172a 40%, #134e5e 70%, #0f172a 100%);
+  background-size: 300% 300%;
+  animation: login-gradient-shift 15s ease infinite;
+}
+
+.login-glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-hero-overlay {
+  background: linear-gradient(180deg,
+      rgba(15, 23, 42, 0.30) 0%,
+      rgba(15, 23, 42, 0.05) 40%,
+      rgba(15, 23, 42, 0.50) 100%);
+}
+
+.login-input {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.login-input::placeholder {
+  color: rgba(148, 163, 184, 0.6);
+}
+
+.login-input:focus {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.08);
+  outline: none;
+}
+
+.login-cta-btn {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  animation: login-pulse-glow 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.login-cta-btn:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.30);
+}
+
+.login-cta-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.login-cta-btn:disabled {
+  animation: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.login-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  pointer-events: none;
+}
+
+/* Feature card hover */
+.login-feature-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.login-feature-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(34, 197, 94, 0.20);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   Base styles
+   ======================================== */
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light mode (default) */
+body {
+  background-color: var(--color-surface-50);
+  color: var(--color-surface-800);
+}
+
+/* Dark mode */
+body.dark {
+  background-color: var(--color-surface-900);
+  color: var(--color-surface-100);
+}
+
+/* ========================================
+   Community Section — Additional animations
+   ======================================== */
+
+/* Shimmer skeleton loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.08) 50%,
+      transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+body:not(.dark) .animate-shimmer {
+  background: linear-gradient(90deg,
+      transparent 25%,
+      rgba(0, 0, 0, 0.04) 50%,
+      transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
